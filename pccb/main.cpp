@@ -10,18 +10,21 @@
 int main(int argc, const char * argv[]) {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    int n = 3;
+    int n = 6;
     int target = 10;
-    int k[] = {1, 3, 5};
+    vector<int>k = {1, 5, 11, 2, 9, 12};
     int ans = false;
     REP(a, n){
         REP(b, n){
             REP(c, n){
-                REP(d, n){
-                    if(k[a] + k[b] + k[c] + k[d] == target){
-                        ans = true;
-                    }
-                }
+//                REP(d, n){
+//                    if(k[a] + k[b] + k[c] + k[d] == target){
+//                        ans = true;
+//                    }
+//                }
+                // find d s.t. k_d = m - k_a - k_b - k_c
+                int dt = n - k[a] - k[b] - k[c];
+                ans |= binary_search(k.begin(), k.end(), dt);
             }
         }
     }
