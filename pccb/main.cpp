@@ -10,17 +10,20 @@
 int main(int argc, const char * argv[]) {
     ios::sync_with_stdio(false);
     cin.tie(0);
-
-    int L = 10;
     int n = 3;
-    int x[] = {2, 6, 7};
-    
-    int ans_min = 0;
-    int ans_max = 0;
-    REP(i, n){
-        ans_min = max(ans_min, min(x[i], L-x[i]));
-        ans_max = max(ans_max, max(x[i], L-x[i]));
+    int target = 10;
+    int k[] = {1, 3, 5};
+    int ans = false;
+    REP(a, n){
+        REP(b, n){
+            REP(c, n){
+                REP(d, n){
+                    if(k[a] + k[b] + k[c] + k[d] == target){
+                        ans = true;
+                    }
+                }
+            }
+        }
     }
-    dump(ans_min);
-    dump(ans_max);
+    dump(ans);
 }
