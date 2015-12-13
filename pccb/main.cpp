@@ -11,27 +11,16 @@ int main(int argc, const char * argv[]) {
     ios::sync_with_stdio(false);
     cin.tie(0);
 
-    int n = 5;
-    int a[] = {2, 3, 4, 5, 6};
-    int ans = 0;
-
-    int i, j, k;
+    int L = 10;
+    int n = 3;
+    int x[] = {2, 6, 7};
+    
+    int ans_min = 0;
+    int ans_max = 0;
     REP(i, n){
-        REP(j, n){
-            REP(k, n){
-                if(a[i] + a[j] <= a[k]){
-                    continue;
-                }
-                if(a[j] + a[k] <= a[i]){
-                    continue;
-                }
-                if(a[k] + a[i] <= a[j]){
-                    continue;
-                }
-//                dump(ans);
-                ans = max(ans, a[i] + a[j] + a[k]);
-            }
-        }
+        ans_min = max(ans_min, min(x[i], L-x[i]));
+        ans_max = max(ans_max, max(x[i], L-x[i]));
     }
-    printf("%d", ans);
+    dump(ans_min);
+    dump(ans_max);
 }
